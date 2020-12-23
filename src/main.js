@@ -34,7 +34,10 @@ function validation() {
   var state = document.querySelector("#state");
   var zipcode = document.querySelector("#zipcode");
 
-  if (cardnumber.value < 1000000000000000) {
+  if (
+    cardnumber.value < 1000000000000000 ||
+    cardnumber.value > 1000000000000000
+  ) {
     displayError("Card number must be 16 digits");
     cardnumber.classList.add("invalid");
   }
@@ -42,15 +45,15 @@ function validation() {
     displayError("CCV must be 3 digits");
     CCV.classList.add("invalid");
   }
-  if (amount.value.length > 0) {
+  if (amount.value.length < 0) {
     displayError("Amount required");
     amount.classList.add("invalid");
   }
-  if (firstname.value.length > 1) {
+  if (firstname.value.length < 1) {
     displayError("First name required");
     firstname.classList.add("invalid");
   }
-  if (lastname.value.length > 1) {
+  if (lastname.value.length < 1) {
     displayError("Last name required");
     lastname.classList.add("invalid");
   }
